@@ -1,15 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
-const event = {
-    id: "1",
-    title: "Community Tree Plantation",
-    category: "Plantation",
-    date: "November 15, 2026",
-    location: "Comilla, Bangladesh",
-    image:
-        "https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200",
-    description:
-        "Join us for a community tree plantation initiative where volunteers come together to make our environment greener and healthier. Every tree we plant contributes to a cleaner environment and a better future for the next generation. Bring your friends and family and become part of this positive change.",
+type Event = {
+    _id: string;
+    title: string;
+    category: string;
+    date: string;
+    location: string;
+    image: string;
+    description: string;
 };
 
 export default async function EventDetailsPage({
@@ -19,11 +19,22 @@ export default async function EventDetailsPage({
 }) {
     const { id } = await params;
 
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/events/${id}`,
+        {
+            cache: "no-store",
+        }
+    );
+
+    if (!res.ok) {
+        notFound();
+    }
+
+    const event: Event = await res.json();
+
     return (
         <main className="min-h-screen bg-[#F8FAF8]">
             <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-
-                {/* Back Button */}
                 <Link
                     href="/upcoming-events"
                     className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-[#176B4D] hover:text-emerald-800"
@@ -31,28 +42,26 @@ export default async function EventDetailsPage({
                     ← Back to Upcoming Events
                 </Link>
 
-                {/* Event Content */}
                 <div className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm">
-
-                    {/* Event Image */}
-                    <div className="h-64 w-full sm:h-96">
-                        <img
+                    <div className="relative h-64 w-full sm:h-96">
+                        <Image
                             src={event.image}
                             alt={event.title}
-                            className="h-full w-full object-cover"
+                            fill
+                            priority
+                            sizes="(max-width: 640px) 100vw, 1152px"
+                            className="object-cover"
                         />
                     </div>
 
-                    {/* Event Information */}
                     <div className="p-6 sm:p-10">
-
                         <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
                             <span className="rounded-full bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-700">
                                 {event.category}
                             </span>
 
                             <span className="text-sm text-gray-500">
-                                Event ID: {id}
+                                Event ID: {event._id}
                             </span>
                         </div>
 
@@ -60,16 +69,21 @@ export default async function EventDetailsPage({
                             {event.title}
                         </h1>
 
-                        {/* Date and Location */}
                         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-
                             <div className="rounded-xl bg-[#F8FAF8] p-5">
                                 <p className="text-sm text-gray-500">
                                     Event Date
                                 </p>
 
                                 <p className="mt-2 font-semibold text-[#172B24]">
-                                    {event.date}
+                                    {new Date(event.date).toLocaleDateString(
+                                        "en-US",
+                                        {
+                                            month: "long",
+                                            day: "numeric",
+                                            year: "numeric",
+                                        }
+                                    )}
                                 </p>
                             </div>
 
@@ -82,10 +96,8 @@ export default async function EventDetailsPage({
                                     {event.location}
                                 </p>
                             </div>
-
                         </div>
 
-                        {/* Description */}
                         <div className="mt-10">
                             <h2 className="text-xl font-bold text-[#172B24]">
                                 About This Event
@@ -96,7 +108,6 @@ export default async function EventDetailsPage({
                             </p>
                         </div>
 
-                        {/* Join Event */}
                         <div className="mt-10 border-t border-gray-100 pt-8">
                             <h2 className="text-xl font-bold text-[#172B24]">
                                 Be Part of the Change
@@ -107,14 +118,17 @@ export default async function EventDetailsPage({
                                 your community a better place.
                             </p>
 
-                            <button className="mt-6 rounded-xl bg-[#176B4D] px-8 py-3 font-semibold text-white transition hover:bg-emerald-800">
+                            <button
+                                disabled
+                                className="mt-6 cursor-not-allowed rounded-xl bg-[#176B4D] px-8 py-3 font-semibold text-white opacity-70"
+                            >
                                 Join Event
                             </button>
                         </div>
-
                     </div>
                 </div>
             </section>
         </main>
     );
+
 }
