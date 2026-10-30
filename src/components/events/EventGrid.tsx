@@ -3,64 +3,20 @@
 import { useState } from "react";
 import EventCard from "./EventCard";
 
-const events = [
-    {
-        id: "1",
-        title: "Community Tree Plantation",
-        category: "Plantation",
-        date: "2026-11-15",
-        location: "Comilla, Bangladesh",
-        image:
-            "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800",
-    },
-    {
-        id: "2",
-        title: "Winter Clothes Distribution",
-        category: "Donation",
-        date: "2026-11-18",
-        location: "Dhaka, Bangladesh",
-        image:
-            "https://images.unsplash.com/photo-1489493585363-d69421e0edd3?w=800",
-    },
-    {
-        id: "3",
-        title: "Neighborhood Cleanup Drive",
-        category: "Cleanup",
-        date: "2026-11-20",
-        location: "Chittagong, Bangladesh",
-        image:
-            "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800",
-    },
-    {
-        id: "4",
-        title: "Food Distribution Program",
-        category: "Donation",
-        date: "2026-11-23",
-        location: "Sylhet, Bangladesh",
-        image:
-            "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800",
-    },
-    {
-        id: "5",
-        title: "Save Our Rivers Campaign",
-        category: "Awareness",
-        date: "2026-11-25",
-        location: "Comilla, Bangladesh",
-        image:
-            "https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=800",
-    },
-    {
-        id: "6",
-        title: "Community Health Awareness",
-        category: "Awareness",
-        date: "2026-11-28",
-        location: "Dhaka, Bangladesh",
-        image:
-            "https://images.unsplash.com/photo-1504150558244-0ef6d4c8f0d6?w=800",
-    },
-];
+export type EventCardData = {
+    id: string;
+    title: string;
+    category: string;
+    date: string;
+    location: string;
+    image: string;
+};
 
-export default function EventGrid() {
+export default function EventGrid({
+    events,
+}: {
+    events: EventCardData[];
+}) {
     const [selectedCategory, setSelectedCategory] = useState("All");
 
     const categories = [
@@ -80,7 +36,10 @@ export default function EventGrid() {
         <div>
             <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
                 <p className="text-gray-600">
-                    Showing <span className="font-semibold">{filteredEvents.length}</span>{" "}
+                    Showing{" "}
+                    <span className="font-semibold">
+                        {filteredEvents.length}
+                    </span>{" "}
                     events
                 </p>
 
@@ -108,6 +67,7 @@ export default function EventGrid() {
                     <h3 className="text-xl font-semibold text-[#172B24]">
                         No events found
                     </h3>
+
                     <p className="mt-2 text-gray-500">
                         Try selecting a different category.
                     </p>

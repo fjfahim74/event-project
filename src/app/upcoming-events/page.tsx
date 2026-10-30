@@ -1,11 +1,65 @@
-import EventGrid from "@/components/events/EventGrid";
+import { Suspense } from "react";
+import EventGrid, {
+    type EventCardData,
+} from "@/components/events/EventGrid";
+
+type ApiEvent = {
+    _id: string;
+    title: string;
+    category: string;
+    date: string;
+    location: string;
+    image: string;
+};
+
+async function UpcomingEvents() {
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/events`,
+        {
+            cache: "no-store",
+        }
+    );
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch events");
+    }
+
+    const data: ApiEvent[] = await res.json();
+
+    const events: EventCardData[] = data.map((event) => ({
+        id: event._id,
+        title: event.title,
+        category: event.category,
+        date: new Date(event.date).toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+        }),
+        location: event.location,
+        image: event.image,
+    }));
+
+    return <EventGrid events={events} />;
+}
+
+function EventsLoading() {
+    return (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, index) => (
+                <div
+                    key={index}
+                    className="h-80 animate-pulse rounded-2xl bg-gray-200"
+                />
+            ))}
+        </div>
+    );
+}
 
 export default function UpcomingEventsPage() {
     return (
         <main className="min-h-screen bg-[#F8FAF8]">
             <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
 
-                {/* Page Heading */}
                 <div className="mb-12 text-center">
                     <span className="mb-4 inline-block rounded-full bg-emerald-100 px-4 py-2 text-sm font-medium text-emerald-700">
                         Make an Impact
@@ -22,8 +76,9 @@ export default function UpcomingEventsPage() {
                     </p>
                 </div>
 
-                {/* Events Grid */}
-                <EventGrid />
+                <Suspense fallback={<EventsLoading />}>
+                    <UpcomingEvents />
+                </Suspense>
 
             </section>
         </main>
