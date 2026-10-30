@@ -1,6 +1,67 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 export default function CreateEventPage() {
+    const router = useRouter();
+    const { data: session } = authClient.useSession();
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleCreateEvent = async (
+        e: React.FormEvent<HTMLFormElement>
+    ) => {
+        e.preventDefault();
+
+        if (!session?.user?.email) {
+            toast.error("Please login to create an event.");
+            return;
+        }
+
+        const formData = new FormData(e.currentTarget);
+
+        const eventData = {
+            title: formData.get("title"),
+            description: formData.get("description"),
+            category: formData.get("category"),
+            date: formData.get("date"),
+            location: formData.get("location"),
+            image: formData.get("image"),
+            creatorEmail: session.user.email,
+        };
+
+        try {
+            setIsSubmitting(true);
+
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/api/events`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(eventData),
+                }
+            );
+
+            if (!res.ok) {
+                throw new Error("Failed to create event");
+            }
+
+            toast.success("Event created successfully!");
+            router.push("/upcoming-events");
+        } catch (error) {
+            toast.error("Something went wrong. Please try again.");
+            console.log(error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <main className="min-h-screen px-4 py-16">
             <div className="mx-auto max-w-3xl">
@@ -15,14 +76,14 @@ export default function CreateEventPage() {
                     </h1>
 
                     <p className="mx-auto max-w-xl text-gray-500">
-                        Bring people together for a meaningful cause. Create an
-                        event and inspire your community to make a difference.
+                        Bring people together for a meaningful cause. Create
+                        an event and inspire your community to make a difference.
                     </p>
                 </div>
 
                 {/* Form */}
                 <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-10">
-                    <form className="space-y-6">
+                    <form onSubmit={handleCreateEvent} className="space-y-6">
 
                         {/* Event Title */}
                         <div>
@@ -31,8 +92,10 @@ export default function CreateEventPage() {
                             </label>
                             <input
                                 type="text"
+                                name="title"
                                 placeholder="e.g. Community Tree Plantation"
                                 className="input w-full border-gray-300"
+                                required
                             />
                         </div>
 
@@ -42,9 +105,11 @@ export default function CreateEventPage() {
                                 Event Description
                             </label>
                             <textarea
+                                name="description"
                                 placeholder="Describe your event and its purpose..."
                                 rows={5}
                                 className="textarea w-full border-gray-300"
+                                required
                             />
                         </div>
 
@@ -55,8 +120,10 @@ export default function CreateEventPage() {
                                     Event Category
                                 </label>
                                 <select
+                                    name="category"
                                     defaultValue=""
                                     className="select w-full border-gray-300"
+                                    required
                                 >
                                     <option value="" disabled>
                                         Select a category
@@ -74,10 +141,15 @@ export default function CreateEventPage() {
                                 </label>
                                 <input
                                     type="date"
-                                    min={new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+                                    name="date"
+                                    min={new Date(
+                                        Date.now() -
+                                        new Date().getTimezoneOffset() * 60000
+                                    )
                                         .toISOString()
                                         .split("T")[0]}
                                     className="input w-full border-gray-300"
+                                    required
                                 />
                             </div>
                         </div>
@@ -89,8 +161,10 @@ export default function CreateEventPage() {
                             </label>
                             <input
                                 type="text"
+                                name="location"
                                 placeholder="e.g. Comilla, Bangladesh"
                                 className="input w-full border-gray-300"
+                                required
                             />
                         </div>
 
@@ -101,8 +175,10 @@ export default function CreateEventPage() {
                             </label>
                             <input
                                 type="url"
+                                name="image"
                                 placeholder="https://example.com/event-image.jpg"
                                 className="input w-full border-gray-300"
+                                required
                             />
                         </div>
 
@@ -110,9 +186,10 @@ export default function CreateEventPage() {
                         <div className="flex flex-col gap-3 border-t border-gray-100 pt-6 sm:flex-row">
                             <button
                                 type="submit"
+                                disabled={isSubmitting}
                                 className="btn flex-1 border-none bg-[#176B4D] text-white hover:bg-[#12563D]"
                             >
-                                Create Event
+                                {isSubmitting ? "Creating..." : "Create Event"}
                             </button>
 
                             <Link
