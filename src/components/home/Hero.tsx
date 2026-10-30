@@ -1,37 +1,96 @@
 import Link from "next/link";
 
 const Hero = () => {
-    return (<section className="bg-gray-50"> <div className="mx-auto flex max-w-7xl flex-col items-center px-4 py-20 text-center md:py-28"> <span className="mb-4 rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
-        Your Next.js Starter </span>
+    return (
+        <section className="bg-[#F0F7F2]">
+            <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
 
-        <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-            Build Something
-            <span className="text-blue-600"> Amazing</span>
-        </h1>
+                {/* Hero Content */}
+                <div>
+                    <span className="inline-block rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-800">
+                        Together for a Better Tomorrow
+                    </span>
 
-        <p className="mt-6 max-w-2xl text-base leading-7 text-gray-600 sm:text-lg">
-            A reusable starting point for your next web project, built with
-            Next.js, TypeScript, and Tailwind CSS.
-        </p>
+                    <h1 className="mt-6 text-4xl font-bold leading-tight text-[#172B24] md:text-5xl lg:text-6xl">
+                        Make a Difference in Your{" "}
+                        <span className="text-green-700">
+                            Community
+                        </span>
+                    </h1>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-                href="/items/example"
-                className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700"
-            >
-                Explore Items
-            </Link>
+                    <p className="mt-6 max-w-lg text-base leading-7 text-gray-600 md:text-lg">
+                        Join hands with passionate people, participate in
+                        meaningful events, and create positive changes in
+                        the lives of others.
+                    </p>
 
-            <Link
-                href="/signup"
-                className="rounded-lg border border-gray-300 bg-white px-6 py-3 font-medium text-gray-700 transition hover:bg-gray-100"
-            >
-                Get Started
-            </Link>
-        </div>
-    </div>
-    </section>
+                    {/* Buttons */}
+                    <div className="mt-8 flex flex-wrap gap-4">
 
+                        <Link
+                            href="/upcoming-events"
+                            className="btn border-none bg-green-700 px-6 text-white hover:bg-green-800"
+                        >
+                            Explore Events
+                        </Link>
+
+                        <Link
+                            href="/create-event"
+                            className="btn border border-green-700 bg-transparent px-6 text-green-800 hover:bg-green-100"
+                        >
+                            Create an Event
+                        </Link>
+
+                    </div>
+
+                    <p className="mt-8 text-sm text-gray-500">
+                        Small actions. Big impact. Stronger communities.
+                    </p>
+                </div>
+
+                {/* Hero Visual */}
+                <div className="relative">
+
+                    <div className="rounded-3xl bg-green-800 p-8 text-white shadow-xl md:p-12">
+
+                        <div className="text-6xl">🌱</div>
+
+                        <h2 className="mt-8 text-3xl font-bold">
+                            Be the Change
+                        </h2>
+
+                        <p className="mt-4 leading-7 text-green-100">
+                            Every helping hand brings us one step closer
+                            to building a healthier, greener, and more
+                            supportive community.
+                        </p>
+
+                        <div className="mt-10 grid grid-cols-2 gap-4">
+
+                            <div className="rounded-2xl bg-white/10 p-5">
+                                <h3 className="text-2xl font-bold">Together</h3>
+                                <p className="mt-1 text-sm text-green-100">
+                                    We make impact
+                                </p>
+                            </div>
+
+                            <div className="rounded-2xl bg-white/10 p-5">
+                                <h3 className="text-2xl font-bold">Every Day</h3>
+                                <p className="mt-1 text-sm text-green-100">
+                                    We help others
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div className="absolute -right-3 -top-4 -z-10 h-full w-full rounded-3xl bg-green-200 md:-right-5 md:-top-5" />
+
+                </div>
+
+            </div>
+        </section>
     );
 };
 

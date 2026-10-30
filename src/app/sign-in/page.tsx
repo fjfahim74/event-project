@@ -49,7 +49,6 @@ export default function SignInPage() {
     return (<section className="flex min-h-[75vh] items-center justify-center bg-gray-50 px-4 py-12"> <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8"> <div className="mb-8 text-center"> <h1 className="text-3xl font-bold text-gray-900">
         Welcome Back! </h1>
 
-        ```
         <p className="mt-2 text-sm text-gray-500">
             Sign in to continue to your account.
         </p>
@@ -91,7 +90,7 @@ export default function SignInPage() {
                                 "Password reset is not configured yet."
                             )
                         }
-                        className="text-sm text-blue-600 hover:underline"
+                        className="text-sm text-green-600 hover:underline"
                     >
                         Forgot password?
                     </button>
@@ -130,7 +129,7 @@ export default function SignInPage() {
             <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-lg bg-green-600 px-4 py-3 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
                 {isLoading ? "Signing in..." : "Sign In"}
             </button>
@@ -176,7 +175,7 @@ export default function SignInPage() {
             Don't have an account?{" "}
             <Link
                 href="/sign-up"
-                className="font-semibold text-blue-600 hover:underline"
+                className=" text-green-700 hover:underline"
             >
                 Sign Up
             </Link>

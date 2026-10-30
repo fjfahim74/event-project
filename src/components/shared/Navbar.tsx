@@ -1,42 +1,126 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDark, setIsDark] = useState(false);
+
+    const handleThemeChange = () => {
+        const newTheme = !isDark;
+
+        setIsDark(newTheme);
+        document.documentElement.setAttribute(
+            "data-theme",
+            newTheme ? "dark" : "light"
+        );
+    };
+
     return (
-        <nav className="border-b border-gray-200 bg-white">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+        <nav className="sticky top-0 z-50 border-b border-base-300 bg-base-100">
+            <div className="navbar mx-auto max-w-7xl px-4">
+
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 text-2xl">
-                        💻
-                    </div>
+                <div className="navbar-start">
+                    <Link href="/" className="flex items-center gap-2">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-700 text-xl font-bold text-white">
+                            E
+                        </div>
 
-                    <span className="text-xl font-bold">My Project</span>
-                </Link>
+                        <span className="text-xl font-bold text-green-800">
+                            Eventify
+                        </span>
+                    </Link>
+                </div>
 
-                {/* Navigation Links */}
-                <div className="flex items-center gap-4">
+                {/* Desktop Navigation */}
+                <div className="navbar-end hidden gap-6 md:flex">
+
                     <Link
-                        href="/"
-                        className="text-sm font-medium hover:text-blue-600"
+                        href="/upcoming-events"
+                        className="font-medium transition hover:text-green-700"
                     >
-                        Home
+                        Upcoming Events
                     </Link>
 
+                    {/* Theme Toggle */}
+                    <button
+                        onClick={handleThemeChange}
+                        className="btn btn-ghost btn-circle"
+                        aria-label="Toggle theme"
+                    >
+                        {isDark ? "☀️" : "🌙"}
+                    </button>
+
+                    {/* Authentication */}
                     <Link
                         href="/sign-in"
-                        className="text-sm font-medium hover:text-blue-600"
+                        className="font-medium hover:text-green-700"
                     >
-                        Sign In
+                        Login
                     </Link>
 
                     <Link
                         href="/sign-up"
-                        className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                        className="btn border-none bg-green-700 text-white hover:bg-green-800"
                     >
-                        Sign Up
+                        Register
                     </Link>
+
+                </div>
+
+                {/* Mobile Menu */}
+                <div className="navbar-end md:hidden">
+
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="btn btn-ghost btn-circle text-xl"
+                        aria-label="Toggle menu"
+                    >
+                        ☰
+                    </button>
+
                 </div>
             </div>
+
+            {/* Mobile Navigation Links */}
+            {isMenuOpen && (
+                <div className="border-t border-base-300 bg-base-100 p-4 md:hidden">
+                    <div className="flex flex-col gap-4">
+
+                        <Link
+                            href="/upcoming-events"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            Upcoming Events
+                        </Link>
+
+                        <button
+                            onClick={handleThemeChange}
+                            className="text-left"
+                        >
+                            {isDark ? "Light Mode ☀️" : "Dark Mode 🌙"}
+                        </button>
+
+                        <Link
+                            href="/sign-in"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            Login
+                        </Link>
+
+                        <Link
+                            href="/sign-up"
+                            onClick={() => setIsMenuOpen(false)}
+                            className="font-semibold text-green-700"
+                        >
+                            Register
+                        </Link>
+
+                    </div>
+                </div>
+            )}
         </nav>
     );
 };
