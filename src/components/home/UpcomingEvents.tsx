@@ -1,65 +1,48 @@
 import Link from "next/link";
 import EventCard from "@/components/events/EventCard";
 
-const UpcomingEvents = () => {
-    const events = [
+type ApiEvent = {
+    _id: string;
+    title: string;
+    category: string;
+    date: string;
+    location: string;
+    image: string;
+};
+
+async function UpcomingEvents() {
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/events/home`,
         {
-            id: "1",
-            title: "Community Tree Plantation",
-            category: "Plantation",
-            date: "November 15, 2026",
-            location: "Comilla, Bangladesh",
-            image: "https://images.unsplash.com/photo-1448375240586-882707db888b",
-        },
-        {
-            id: "2",
-            title: "Clean Our Neighborhood",
-            category: "Cleanup",
-            date: "November 18, 2026",
-            location: "Dhaka, Bangladesh",
-            image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b",
-        },
-        {
-            id: "3",
-            title: "Winter Clothes Donation",
-            category: "Donation",
-            date: "November 22, 2026",
-            location: "Chittagong, Bangladesh",
-            image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c",
-        },
-        {
-            id: "4",
-            title: "Community Blood Donation",
-            category: "Donation",
-            date: "November 25, 2026",
-            location: "Comilla, Bangladesh",
-            image: "https://images.unsplash.com/photo-1615461066841-6116e61058f4",
-        },
-        {
-            id: "5",
-            title: "Save Our Local Rivers",
-            category: "Cleanup",
-            date: "November 28, 2026",
-            location: "Sylhet, Bangladesh",
-            image: "https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2",
-        },
-        {
-            id: "6",
-            title: "Food Distribution Program",
-            category: "Donation",
-            date: "December 2, 2026",
-            location: "Dhaka, Bangladesh",
-            image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c",
-        },
-    ];
+            cache: "no-store",
+        }
+    );
+
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch upcoming events");
+    }
+
+    const data: ApiEvent[] = await res.json();
+
+    const events = data.map((event) => ({
+        id: event._id,
+        title: event.title,
+        category: event.category,
+        date: new Date(event.date).toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+        }),
+        location: event.location,
+        image: event.image,
+    }));
 
     return (
         <section className="bg-white py-20">
             <div className="mx-auto max-w-7xl px-6">
-
                 {/* Section Heading */}
                 <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-
                     <div className="max-w-2xl">
                         <span className="font-semibold uppercase tracking-wider text-green-700">
                             Make a Difference
@@ -80,7 +63,6 @@ const UpcomingEvents = () => {
                     </div>
 
                     <div className="flex flex-wrap gap-3">
-
                         <Link
                             href="/upcoming-events"
                             className="btn border border-green-700 bg-white text-green-800 hover:bg-green-50"
@@ -94,26 +76,34 @@ const UpcomingEvents = () => {
                         >
                             + Create Event
                         </Link>
-
                     </div>
-
                 </div>
 
                 {/* Event Cards */}
-                <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {events.length > 0 ? (
+                    <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                        {events.map((event) => (
+                            <EventCard
+                                key={event.id}
+                                {...event}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="mt-12 rounded-2xl border border-dashed border-gray-300 py-16 text-center">
+                        <h3 className="text-xl font-semibold text-[#172B24]">
+                            No upcoming events yet
+                        </h3>
 
-                    {events.map((event) => (
-                        <EventCard
-                            key={event.id}
-                            {...event}
-                        />
-                    ))}
-
-                </div>
-
+                        <p className="mt-2 text-gray-500">
+                            Check back soon for opportunities to make a difference.
+                        </p>
+                    </div>
+                )}
             </div>
         </section>
     );
-};
+
+}
 
 export default UpcomingEvents;
