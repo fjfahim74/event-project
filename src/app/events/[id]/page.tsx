@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import JoinEventButton from "@/components/events/JoinEventButton";
 
 type Event = {
     _id: string;
@@ -118,12 +119,13 @@ export default async function EventDetailsPage({
                                 your community a better place.
                             </p>
 
-                            <button
-                                disabled
-                                className="mt-6 cursor-not-allowed rounded-xl bg-[#176B4D] px-8 py-3 font-semibold text-white opacity-70"
-                            >
-                                Join Event
-                            </button>
+                            <JoinEventButton
+                                event={{
+                                    _id: event._id,
+                                    title: event.title,
+                                    image: event.image,
+                                }}
+                            />
                         </div>
                     </div>
                 </div>
