@@ -47,6 +47,11 @@ export default function JoinEventButton({ event }: { event: Event }) {
                 }
             );
 
+            if (res.status === 409) {
+                toast.error("You have already joined this event!");
+                return;
+            }
+
             if (!res.ok) {
                 throw new Error("Failed to join event");
             }
