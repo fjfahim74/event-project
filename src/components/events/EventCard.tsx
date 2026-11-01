@@ -28,34 +28,39 @@ const EventCard = ({
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                 />
 
+                {/* Category Badge (Top Left) */}
                 <span className="absolute left-4 top-4 rounded-full bg-white px-4 py-2 text-xs font-semibold text-green-800 shadow">
                     {category}
                 </span>
+
+                {/* Date Badge (Bottom Left over Image) */}
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-lg bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow backdrop-blur-sm">
+                    <span>📅</span>
+                    <span>{date}</span>
+                </div>
             </div>
 
             {/* Event Information */}
             <div className="p-6">
 
-                <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <span>📅</span>
-                    <span>{date}</span>
-                </div>
-
-                <h3 className="mt-3 text-xl font-bold text-[#172B24] transition group-hover:text-green-700">
+                {/* Title */}
+                <h3 className="text-xl font-bold text-[#172B24] transition group-hover:text-green-700">
                     {title}
                 </h3>
 
+                {/* Location */}
                 <div className="mt-3 flex items-center gap-2 text-sm text-gray-500">
                     <span>📍</span>
                     <span>{location}</span>
                 </div>
 
+                {/* Button Section */}
                 <div className="mt-6 border-t border-gray-100 pt-4">
                     <Link
                         href={`/events/${id}`}
-                        className="flex items-center justify-between font-semibold text-green-700 transition hover:text-green-900"
+                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-700 py-3 text-white font-semibold transition hover:bg-green-800"
                     >
-                        View Event
+                        <span>View Event</span>
                         <span className="text-xl">→</span>
                     </Link>
                 </div>

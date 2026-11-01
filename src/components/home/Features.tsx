@@ -56,11 +56,11 @@ const Features = () => {
                 <div className="mt-14 grid gap-8 md:grid-cols-3">
 
                     {features.map((feature, index) => (
-                        <div
+                        <Link
                             key={index}
-                            className="group rounded-2xl border border-green-100 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl"
+                            href={feature.link}
+                            className="group block rounded-2xl border border-green-100 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl"
                         >
-
                             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-3xl transition duration-300 group-hover:bg-green-700">
                                 {feature.icon}
                             </div>
@@ -73,15 +73,10 @@ const Features = () => {
                                 {feature.description}
                             </p>
 
-                            <Link
-                                href={feature.link}
-                                className="mt-6 inline-flex items-center gap-2 font-semibold text-green-700 transition hover:gap-3"
-                            >
+                            <span className="mt-6 inline-flex items-center gap-2 font-semibold text-green-700 transition group-hover:gap-3">
                                 {feature.button}
-                                <span>→</span>
-                            </Link>
-
-                        </div>
+                            </span>
+                        </Link>
                     ))}
 
                 </div>
