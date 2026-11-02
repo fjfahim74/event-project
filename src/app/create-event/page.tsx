@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 export default function CreateEventPage() {
     const router = useRouter();
@@ -37,12 +38,15 @@ export default function CreateEventPage() {
         try {
             setIsSubmitting(true);
 
+            const token = await getTokenFromClient();
+
             const res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_URL}/api/events`,
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
+                        authorization: `Bearer ${token}`,
                     },
                     body: JSON.stringify(eventData),
                 }

@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 type Event = {
     _id: string;
@@ -81,12 +82,15 @@ export default function EditEventPage() {
         try {
             setIsSubmitting(true);
 
+            const token = await getTokenFromClient();
+
             const res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_URL}/api/events/${id}`,
                 {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
+                        authorization: `Bearer ${token}`,
                     },
                     body: JSON.stringify(eventData),
                 }
