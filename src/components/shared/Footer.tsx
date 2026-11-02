@@ -7,7 +7,7 @@ const Footer = () => {
 
                     {/* Logo and Description */}
                     <div className="text-center md:text-left">
-                        <h2 className="text-xl font-bold text-green-800">
+                        <h2 className="text-xl font-bold text-emerald-500">
                             Eventify
                         </h2>
 
@@ -18,15 +18,15 @@ const Footer = () => {
 
                     {/* Navigation Links */}
                     <div className="flex gap-6 text-sm">
-                        <a href="/" className="hover:text-green-700">
+                        <a href="/" className="text-base-content/70 hover:text-emerald-500">
                             Home
                         </a>
 
-                        <a href="/upcoming-events" className="hover:text-green-700">
+                        <a href="/upcoming-events" className="text-base-content/70 hover:text-emerald-500">
                             Upcoming Events
                         </a>
 
-                        <a href="/sign-up" className="hover:text-green-700">
+                        <a href="/sign-up" className="text-base-content/70 hover:text-emerald-500">
                             Join Us
                         </a>
                     </div>

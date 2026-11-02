@@ -1,4 +1,6 @@
+
 import { Suspense } from "react";
+
 import EventGrid, {
     type EventCardData,
 } from "@/components/events/EventGrid";
@@ -48,7 +50,7 @@ function EventsLoading() {
             {Array.from({ length: 6 }).map((_, index) => (
                 <div
                     key={index}
-                    className="h-80 animate-pulse rounded-2xl bg-gray-200"
+                    className="h-80 animate-pulse rounded-2xl bg-base-300"
                 />
             ))}
         </div>
@@ -57,7 +59,7 @@ function EventsLoading() {
 
 export default function UpcomingEventsPage() {
     return (
-        <main className="min-h-screen bg-[#F8FAF8]">
+        <main className="min-h-screen bg-base-100">
             <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
 
                 <div className="mb-12 text-center">
@@ -65,11 +67,11 @@ export default function UpcomingEventsPage() {
                         Make an Impact
                     </span>
 
-                    <h1 className="text-3xl font-bold text-[#172B24] sm:text-4xl lg:text-5xl">
+                    <h1 className="text-3xl font-bold text-base-content sm:text-4xl lg:text-5xl">
                         Explore Upcoming Events
                     </h1>
 
-                    <p className="mx-auto mt-4 max-w-2xl text-gray-600">
+                    <p className="mx-auto mt-4 max-w-2xl text-base-content/70">
                         Discover opportunities to make a difference in your
                         community. Find an event, join the movement, and
                         create positive change together.

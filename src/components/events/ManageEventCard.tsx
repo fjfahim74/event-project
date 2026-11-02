@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 
 type ManageEventCardProps = {
@@ -20,7 +21,7 @@ export default function ManageEventCard({
     onDelete,
 }: ManageEventCardProps) {
     return (
-        <div className="overflow-hidden rounded-2xl border border-green-100 bg-white shadow-sm">
+        <div className="overflow-hidden rounded-2xl border border-base-300 bg-base-200 shadow-sm">
             <div className="relative h-48">
                 <img
                     src={image}
@@ -34,19 +35,19 @@ export default function ManageEventCard({
                     {category}
                 </span>
 
-                <h3 className="mt-3 text-xl font-bold text-[#172B24]">
+                <h3 className="mt-3 text-xl font-bold text-base-content">
                     {title}
                 </h3>
 
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-base-content/60">
                     📅 {date}
                 </p>
 
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-base-content/60">
                     📍 {location}
                 </p>
 
-                <div className="mt-5 flex gap-3 border-t border-gray-100 pt-4">
+                <div className="mt-5 flex gap-3 border-t border-base-300 pt-4">
                     <Link
                         href={`/edit-event/${id}`}
                         className="flex-1 rounded-lg bg-green-700 px-4 py-2 text-center font-semibold text-white transition hover:bg-green-800"
@@ -56,7 +57,7 @@ export default function ManageEventCard({
 
                     <button
                         onClick={() => onDelete(id)}
-                        className="flex-1 rounded-lg bg-red-50 px-4 py-2 font-semibold text-red-600 transition hover:bg-red-100"
+                        className="flex-1 rounded-lg bg-red-600 px-4 py-2 font-semibold text-white transition hover:bg-red-700"
                     >
                         Delete
                     </button>

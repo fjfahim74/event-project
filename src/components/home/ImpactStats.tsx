@@ -1,3 +1,4 @@
+
 const ImpactStats = () => {
     const stats = [
         {
@@ -23,7 +24,7 @@ const ImpactStats = () => {
     ];
 
     return (
-        <section className="bg-white py-16">
+        <section className="bg-base-100 py-16">
             <div className="mx-auto max-w-7xl px-6">
 
                 <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
@@ -31,7 +32,7 @@ const ImpactStats = () => {
                     {stats.map((stat, index) => (
                         <div
                             key={index}
-                            className="rounded-2xl border border-green-100 bg-[#F8FAF8] p-6 text-center transition duration-300 hover:-translate-y-2 hover:shadow-lg"
+                            className="rounded-2xl border border-base-300 bg-base-200 p-6 text-center transition duration-300 hover:-translate-y-2 hover:shadow-lg"
                         >
                             <div className="text-3xl">
                                 {stat.icon}
@@ -41,7 +42,7 @@ const ImpactStats = () => {
                                 {stat.number}
                             </h2>
 
-                            <p className="mt-2 text-sm font-medium text-gray-600 md:text-base">
+                            <p className="mt-2 text-sm font-medium text-base-content/70 md:text-base">
                                 {stat.title}
                             </p>
                         </div>

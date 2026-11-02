@@ -1,4 +1,6 @@
+
 import Link from "next/link";
+
 import EventCard from "@/components/events/EventCard";
 
 type ApiEvent = {
@@ -17,7 +19,6 @@ async function UpcomingEvents() {
             cache: "no-store",
         }
     );
-
 
     if (!res.ok) {
         throw new Error("Failed to fetch upcoming events");
@@ -39,7 +40,7 @@ async function UpcomingEvents() {
     }));
 
     return (
-        <section className="bg-white py-20">
+        <section className="bg-base-100 py-20">
             <div className="mx-auto max-w-7xl px-6">
                 {/* Section Heading */}
                 <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -48,14 +49,14 @@ async function UpcomingEvents() {
                             Make a Difference
                         </span>
 
-                        <h2 className="mt-3 text-3xl font-bold text-[#172B24] md:text-4xl">
+                        <h2 className="mt-3 text-3xl font-bold text-base-content md:text-4xl">
                             Upcoming{" "}
                             <span className="text-green-700">
                                 Events
                             </span>
                         </h2>
 
-                        <p className="mt-4 leading-7 text-gray-600">
+                        <p className="mt-4 leading-7 text-base-content/70">
                             Discover meaningful community activities and
                             find your next opportunity to create a positive
                             impact.
@@ -65,7 +66,7 @@ async function UpcomingEvents() {
                     <div className="flex flex-wrap gap-3">
                         <Link
                             href="/upcoming-events"
-                            className="btn border border-green-700 bg-white text-green-800 hover:bg-green-50"
+                            className="btn border border-green-700 bg-base-200 text-green-800 hover:bg-green-50"
                         >
                             View All Events
                         </Link>
@@ -90,12 +91,12 @@ async function UpcomingEvents() {
                         ))}
                     </div>
                 ) : (
-                    <div className="mt-12 rounded-2xl border border-dashed border-gray-300 py-16 text-center">
-                        <h3 className="text-xl font-semibold text-[#172B24]">
+                    <div className="mt-12 rounded-2xl border border-dashed border-base-300 py-16 text-center">
+                        <h3 className="text-xl font-semibold text-base-content">
                             No upcoming events yet
                         </h3>
 
-                        <p className="mt-2 text-gray-500">
+                        <p className="mt-2 text-base-content/60">
                             Check back soon for opportunities to make a difference.
                         </p>
                     </div>

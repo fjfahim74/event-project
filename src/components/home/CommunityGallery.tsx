@@ -1,3 +1,4 @@
+
 const galleryImages = [
     {
         image:
@@ -23,18 +24,18 @@ const galleryImages = [
 
 export default function CommunityGallery() {
     return (
-        <section className="bg-white py-20">
+        <section className="bg-base-100 py-20">
             <div className="mx-auto max-w-7xl px-5">
                 <div className="mb-12 text-center">
                     <p className="mb-3 font-semibold text-emerald-700">
                         OUR COMMUNITY IN ACTION
                     </p>
 
-                    <h2 className="text-3xl font-bold text-[#172B24] md:text-4xl">
+                    <h2 className="text-3xl font-bold text-base-content md:text-4xl">
                         Small Actions, Big Impact
                     </h2>
 
-                    <p className="mx-auto mt-4 max-w-2xl text-gray-600">
+                    <p className="mx-auto mt-4 max-w-2xl text-base-content/70">
                         Every event brings people together to create positive change.
                         Take a look at the moments that make our community special.
                     </p>

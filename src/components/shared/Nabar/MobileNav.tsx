@@ -34,7 +34,7 @@ const MobileNav = ({
 
                         <button
                             onClick={handleThemeChange}
-                            className="text-left"
+                            className="text-left text-base-content"
                         >
                             {isDark ? "Light Mode ☀️" : "Dark Mode 🌙"}
                         </button>
@@ -53,7 +53,7 @@ const MobileNav = ({
                                 <Link
                                     href="/sign-up"
                                     onClick={() => setIsMenuOpen(false)}
-                                    className="font-semibold text-green-700"
+                                    className="font-semibold text-emerald-500"
                                 >
                                     Register
                                 </Link>

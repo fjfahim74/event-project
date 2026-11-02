@@ -30,7 +30,6 @@ export default function ManageEventsPage() {
             }
 
             try {
-
                 const token = await getTokenFromClient();
                 const res = await fetch(
                     `${process.env.NEXT_PUBLIC_API_URL}/api/my-events/${session.user.email}`,
@@ -65,7 +64,6 @@ export default function ManageEventsPage() {
         if (!selectedEventId) return;
 
         try {
-
             const token = await getTokenFromClient();
             const res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_URL}/api/events/${selectedEventId}`,
@@ -92,20 +90,20 @@ export default function ManageEventsPage() {
     };
 
     return (
-        <main className="min-h-screen bg-[#F8FAF8] px-4 py-12">
+        <main className="min-h-screen bg-base-100 px-4 py-12">
             <div className="mx-auto max-w-7xl">
-                <h1 className="mb-2 text-3xl font-bold text-[#172B24]">
+                <h1 className="mb-2 text-3xl font-bold text-base-content">
                     Manage Events
                 </h1>
 
-                <p className="mb-8 text-gray-600">
+                <p className="mb-8 text-base-content/70">
                     Manage the events you have created.
                 </p>
 
                 {loading ? (
-                    <p className="text-gray-500">Loading your events...</p>
+                    <p className="text-base-content/60">Loading your events...</p>
                 ) : events.length === 0 ? (
-                    <p className="text-gray-500">
+                    <p className="text-base-content/60">
                         You haven't created any events yet.
                     </p>
                 ) : (
@@ -128,12 +126,12 @@ export default function ManageEventsPage() {
 
             {selectedEventId && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-                    <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
-                        <h2 className="text-xl font-bold text-[#172B24]">
+                    <div className="w-full max-w-md rounded-2xl bg-base-200 p-6 shadow-xl">
+                        <h2 className="text-xl font-bold text-base-content">
                             Delete Event?
                         </h2>
 
-                        <p className="mt-3 text-gray-600">
+                        <p className="mt-3 text-base-content/70">
                             Are you sure you want to delete this event? This
                             action cannot be undone.
                         </p>
@@ -141,7 +139,7 @@ export default function ManageEventsPage() {
                         <div className="mt-6 flex justify-end gap-3">
                             <button
                                 onClick={() => setSelectedEventId(null)}
-                                className="rounded-lg border border-gray-300 px-5 py-2 font-semibold text-gray-700 hover:bg-gray-100 cursor-pointer"
+                                className="rounded-lg border border-base-300 px-5 py-2 font-semibold text-base-content/70 hover:bg-base-300 cursor-pointer"
                             >
                                 Cancel
                             </button>

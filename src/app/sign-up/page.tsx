@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -95,7 +96,6 @@ export default function SignUpPage() {
                 image,
             });
 
-
             if (error) {
                 if (error.code === "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL") {
                     toast.error("An account with this email already exists!");
@@ -117,15 +117,15 @@ export default function SignUpPage() {
     };
 
     return (
-        <section className="flex min-h-[75vh] items-center justify-center bg-[#F8FAF8] px-4 py-12">
-            <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+        <section className="flex min-h-[75vh] items-center justify-center bg-base-100 px-4 py-12">
+            <div className="w-full max-w-md rounded-2xl border border-base-300 bg-base-200 p-6 shadow-sm sm:p-8">
 
                 <div className="mb-8 text-center">
-                    <h1 className="text-3xl font-bold text-[#172B24]">
+                    <h1 className="text-3xl font-bold text-base-content">
                         Create an Account
                     </h1>
 
-                    <p className="mt-2 text-sm text-gray-500">
+                    <p className="mt-2 text-sm text-base-content/60">
                         Join Eventify and start making a difference.
                     </p>
                 </div>
@@ -133,7 +133,7 @@ export default function SignUpPage() {
                 <form onSubmit={onSubmit} noValidate className="space-y-4">
 
                     <div>
-                        <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-700">
+                        <label htmlFor="name" className="mb-2 block text-sm font-medium text-base-content/80">
                             Full Name
                         </label>
 
@@ -145,12 +145,12 @@ export default function SignUpPage() {
                             autoComplete="name"
                             required
                             disabled={isLoading}
-                            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-[#176B4D] focus:ring-2 focus:ring-green-100"
+                            className="w-full rounded-lg border-2 border-base-content/20 bg-base-100 px-4 py-3 text-base-content placeholder:text-base-content/40 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
                         />
                     </div>
 
                     <div>
-                        <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-700">
+                        <label htmlFor="email" className="mb-2 block text-sm font-medium text-base-content/80">
                             Email Address
                         </label>
 
@@ -162,12 +162,12 @@ export default function SignUpPage() {
                             autoComplete="email"
                             required
                             disabled={isLoading}
-                            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-[#176B4D] focus:ring-2 focus:ring-green-100"
+                            className="w-full rounded-lg border-2 border-base-content/20 bg-base-100 px-4 py-3 text-base-content placeholder:text-base-content/40 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
                         />
                     </div>
 
                     <div>
-                        <label htmlFor="image" className="mb-2 block text-sm font-medium text-gray-700">
+                        <label htmlFor="image" className="mb-2 block text-sm font-medium text-base-content/80">
                             Photo URL
                         </label>
 
@@ -178,12 +178,12 @@ export default function SignUpPage() {
                             placeholder="Enter your profile photo URL"
                             required
                             disabled={isLoading}
-                            className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-[#176B4D] focus:ring-2 focus:ring-green-100"
+                            className="w-full rounded-lg border-2 border-base-content/20 bg-base-100 px-4 py-3 text-base-content placeholder:text-base-content/40 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
                         />
                     </div>
 
                     <div>
-                        <label htmlFor="password" className="mb-2 block text-sm font-medium text-gray-700">
+                        <label htmlFor="password" className="mb-2 block text-sm font-medium text-base-content/80">
                             Password
                         </label>
 
@@ -197,13 +197,13 @@ export default function SignUpPage() {
                                 minLength={6}
                                 required
                                 disabled={isLoading}
-                                className="w-full rounded-lg border border-gray-300 px-4 py-3 pr-20 outline-none transition focus:border-[#176B4D] focus:ring-2 focus:ring-green-100"
+                                className="w-full rounded-lg border-2 border-base-content/20 bg-base-100 px-4 py-3 pr-20 text-base-content placeholder:text-base-content/40 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
                             />
 
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-500"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-base-content/60"
                             >
                                 {showPassword ? "Hide" : "Show"}
                             </button>
@@ -211,7 +211,7 @@ export default function SignUpPage() {
                     </div>
 
                     <div>
-                        <label htmlFor="confirmPassword" className="mb-2 block text-sm font-medium text-gray-700">
+                        <label htmlFor="confirmPassword" className="mb-2 block text-sm font-medium text-base-content/80">
                             Confirm Password
                         </label>
 
@@ -225,13 +225,13 @@ export default function SignUpPage() {
                                 minLength={6}
                                 required
                                 disabled={isLoading}
-                                className="w-full rounded-lg border border-gray-300 px-4 py-3 pr-20 outline-none transition focus:border-[#176B4D] focus:ring-2 focus:ring-green-100"
+                                className="w-full rounded-lg border-2 border-base-content/20 bg-base-100 px-4 py-3 pr-20 text-base-content placeholder:text-base-content/40 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
                             />
 
                             <button
                                 type="button"
                                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-500"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-base-content/60"
                             >
                                 {showConfirmPassword ? "Hide" : "Show"}
                             </button>
@@ -248,9 +248,9 @@ export default function SignUpPage() {
                 </form>
 
                 <div className="my-5 flex items-center gap-3">
-                    <div className="h-px flex-1 bg-gray-200" />
-                    <span className="text-sm text-gray-400">OR</span>
-                    <div className="h-px flex-1 bg-gray-200" />
+                    <div className="h-px flex-1 bg-base-300" />
+                    <span className="text-sm text-base-content/50">OR</span>
+                    <div className="h-px flex-1 bg-base-300" />
                 </div>
 
                 <div className="space-y-3">
@@ -258,7 +258,7 @@ export default function SignUpPage() {
                         type="button"
                         onClick={handleGoogleSignUp}
                         disabled={isGoogleLoading || isGithubLoading}
-                        className="w-full rounded-lg border border-gray-300 py-3 font-medium text-gray-700 transition hover:bg-gray-50 disabled:opacity-60"
+                        className="w-full rounded-lg border border-base-300 py-3 font-medium text-base-content/80 transition hover:bg-base-300 disabled:opacity-60"
                     >
                         {isGoogleLoading ? "Connecting..." : "Continue with Google"}
                     </button>
@@ -267,13 +267,13 @@ export default function SignUpPage() {
                         type="button"
                         onClick={handleGithubSignUp}
                         disabled={isGithubLoading || isGoogleLoading}
-                        className="w-full rounded-lg border border-gray-300 py-3 font-medium text-gray-700 transition hover:bg-gray-50 disabled:opacity-60"
+                        className="w-full rounded-lg border border-base-300 py-3 font-medium text-base-content/80 transition hover:bg-base-300 disabled:opacity-60"
                     >
                         {isGithubLoading ? "Connecting..." : "Continue with GitHub"}
                     </button>
                 </div>
 
-                <p className="mt-6 text-center text-sm text-gray-600">
+                <p className="mt-6 text-center text-sm text-base-content/70">
                     Already have an account?{" "}
                     <Link
                         href="/sign-in"

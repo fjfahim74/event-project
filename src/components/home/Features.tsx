@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 
 const Features = () => {
@@ -29,7 +30,7 @@ const Features = () => {
     ];
 
     return (
-        <section className="bg-[#F8FAF8] py-20">
+        <section className="bg-base-100 py-20">
             <div className="mx-auto max-w-7xl px-6">
 
                 {/* Section Heading */}
@@ -39,12 +40,12 @@ const Features = () => {
                         What We Offer
                     </span>
 
-                    <h2 className="mt-3 text-3xl font-bold text-[#172B24] md:text-4xl">
+                    <h2 className="mt-3 text-3xl font-bold text-base-content md:text-4xl">
                         Everything You Need to
                         <span className="text-green-700"> Make an Impact</span>
                     </h2>
 
-                    <p className="mt-4 leading-7 text-gray-600">
+                    <p className="mt-4 leading-7 text-base-content/70">
                         Eventify makes it easier to discover opportunities,
                         organize initiatives, and work together to build
                         stronger communities.
@@ -59,17 +60,17 @@ const Features = () => {
                         <Link
                             key={index}
                             href={feature.link}
-                            className="group block rounded-2xl border border-green-100 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl"
+                            className="group block rounded-2xl border border-base-300 bg-base-200 p-8 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl"
                         >
                             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-3xl transition duration-300 group-hover:bg-green-700">
                                 {feature.icon}
                             </div>
 
-                            <h3 className="mt-6 text-xl font-bold text-[#172B24]">
+                            <h3 className="mt-6 text-xl font-bold text-base-content">
                                 {feature.title}
                             </h3>
 
-                            <p className="mt-4 min-h-20 leading-7 text-gray-600">
+                            <p className="mt-4 min-h-20 leading-7 text-base-content/70">
                                 {feature.description}
                             </p>
 

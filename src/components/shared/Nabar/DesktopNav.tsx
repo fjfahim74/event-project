@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import UserProfile from "./UserProfile";
 
@@ -15,10 +16,10 @@ const DesktopNav = ({
             <div className="navbar-center hidden md:flex">
                 <Link
                     href="/upcoming-events"
-                    className="group flex items-center gap-2 text-sm font-semibold text-emerald-700 transition hover:text-emerald-900"
+                    className="group flex items-center gap-2 text-sm font-semibold text-emerald-500 transition hover:text-emerald-600"
                 >
                     <svg
-                        className="h-4 w-4 text-emerald-600 transition group-hover:scale-110"
+                        className="h-4 w-4 text-emerald-400 transition group-hover:scale-110"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -55,7 +56,7 @@ const DesktopNav = ({
                     <div className="flex items-center gap-4">
                         <Link
                             href="/sign-in"
-                            className="font-medium hover:text-green-700"
+                            className="font-medium text-base-content hover:text-emerald-500"
                         >
                             Login
                         </Link>
@@ -80,9 +81,9 @@ const DesktopNav = ({
                         <button
                             type="button"
                             onClick={handleSignOut}
-                            className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-rose-600 transition hover:bg-rose-50 cursor-pointer"
+                            className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-rose-600 transition hover:bg-rose-900/20 cursor-pointer"
                         >
-                            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-50 text-rose-600 text-xs">
+                            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-900/10 text-rose-400 text-xs">
                                 ➔
                             </span>
                             <span>Logout</span>

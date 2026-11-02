@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Hero = () => {
     return (
-        <section className="bg-[#F0F7F2]">
+        <section className="bg-base-100">
             <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
 
                 {/* Hero Content */}
@@ -11,14 +11,14 @@ const Hero = () => {
                         Together for a Better Tomorrow
                     </span>
 
-                    <h1 className="mt-6 text-4xl font-bold leading-tight text-[#172B24] md:text-5xl lg:text-6xl">
+                    <h1 className="mt-6 text-4xl font-bold leading-tight text-base-content md:text-5xl lg:text-6xl">
                         Make a Difference in Your{" "}
                         <span className="text-green-700">
                             Community
                         </span>
                     </h1>
 
-                    <p className="mt-6 max-w-lg text-base leading-7 text-gray-600 md:text-lg">
+                    <p className="mt-6 max-w-lg text-base leading-7 text-base-content/70 md:text-lg">
                         Join hands with passionate people, participate in
                         meaningful events, and create positive changes in
                         the lives of others.
@@ -43,7 +43,7 @@ const Hero = () => {
 
                     </div>
 
-                    <p className="mt-8 text-sm text-gray-500">
+                    <p className="mt-8 text-sm text-base-content/60">
                         Small actions. Big impact. Stronger communities.
                     </p>
                 </div>

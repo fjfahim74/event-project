@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -39,7 +40,6 @@ export default function JoinedEventsPage() {
                     }
                 );
 
-
                 if (!res.ok) {
                     throw new Error("Failed to fetch joined events");
                 }
@@ -57,20 +57,20 @@ export default function JoinedEventsPage() {
     }, [session?.user?.email]);
 
     return (
-        <main className="min-h-screen bg-[#F8FAF8] px-4 py-12">
+        <main className="min-h-screen bg-base-100 px-4 py-12">
             <div className="mx-auto max-w-7xl">
-                <h1 className="mb-2 text-3xl font-bold text-[#172B24]">
+                <h1 className="mb-2 text-3xl font-bold text-base-content">
                     Joined Events
                 </h1>
 
-                <p className="mb-8 text-gray-600">
+                <p className="mb-8 text-base-content/70">
                     Events you have joined and are looking forward to.
                 </p>
 
                 {loading ? (
-                    <p className="text-gray-500">Loading joined events...</p>
+                    <p className="text-base-content/60">Loading joined events...</p>
                 ) : joinedEvents.length === 0 ? (
-                    <p className="text-gray-500">
+                    <p className="text-base-content/60">
                         You haven't joined any events yet.
                     </p>
                 ) : (

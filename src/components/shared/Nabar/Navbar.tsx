@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
@@ -19,6 +19,16 @@ const Navbar = () => {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isDark, setIsDark] = useState(false);
 
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("eventify-theme");
+
+        const theme = savedTheme === "dark" ? "dark" : "light";
+
+        document.documentElement.setAttribute("data-theme", theme);
+
+        setIsDark(theme === "dark");
+    }, []);
+
     const handleThemeChange = () => {
         const newTheme = !isDark;
 
@@ -26,6 +36,11 @@ const Navbar = () => {
 
         document.documentElement.setAttribute(
             "data-theme",
+            newTheme ? "dark" : "light"
+        );
+
+        localStorage.setItem(
+            "eventify-theme",
             newTheme ? "dark" : "light"
         );
     };

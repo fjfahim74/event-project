@@ -68,10 +68,10 @@ const UserProfile = ({
                     )}
 
                     <div className="min-w-0">
-                        <p className="truncate text-sm font-semibold text-slate-900">
+                        <p className="truncate text-sm font-semibold text-base-content">
                             {user.name}
                         </p>
-                        <p className="truncate text-xs text-slate-500">
+                        <p className="truncate text-xs text-base-content/60">
                             {user.email}
                         </p>
                     </div>
@@ -80,7 +80,7 @@ const UserProfile = ({
                 <Link
                     href="/create-event"
                     onClick={onClose}
-                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-base-content/80 transition hover:bg-base-300"
                 >
                     <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 text-xs">
                         ⊕
@@ -91,7 +91,7 @@ const UserProfile = ({
                 <Link
                     href="/manage-events"
                     onClick={onClose}
-                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-base-content/80 transition hover:bg-base-300"
                 >
                     <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 text-xs">
                         ⚙️
@@ -102,7 +102,7 @@ const UserProfile = ({
                 <Link
                     href="/joined-events"
                     onClick={onClose}
-                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-base-content/80 transition hover:bg-base-300"
                 >
                     <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 text-xs">
                         ✓
@@ -151,14 +151,14 @@ const UserProfile = ({
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 top-full z-[100] mt-3 w-64 rounded-2xl border border-slate-100 bg-white p-2 shadow-xl ring-1 ring-slate-900/5">
+                <div className="absolute right-0 top-full z-[100] mt-3 w-64 rounded-2xl border border-base-300 bg-base-200 p-2 shadow-xl ring-1 ring-slate-900/5">
 
                     {/* User Info Header */}
-                    <div className="mb-2 border-b border-slate-100 px-3 py-2.5">
-                        <p className="text-sm font-semibold text-slate-900 truncate">
+                    <div className="mb-2 border-b border-base-300 px-3 py-2.5">
+                        <p className="text-sm font-semibold text-base-content truncate">
                             {user.name}
                         </p>
-                        <p className="text-xs text-slate-500 truncate">
+                        <p className="text-xs text-base-content/60 truncate">
                             {user.email}
                         </p>
                     </div>
@@ -169,7 +169,7 @@ const UserProfile = ({
                         <Link
                             href="/create-event"
                             onClick={onClose}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-base-content/80 transition hover:bg-base-300 hover:text-base-content"
                         >
                             <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 text-xs">
                                 ⊕
@@ -181,7 +181,7 @@ const UserProfile = ({
                         <Link
                             href="/manage-events"
                             onClick={onClose}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-base-content/80 transition hover:bg-base-300 hover:text-base-content"
                         >
                             <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 text-xs">
                                 ⚙️
@@ -193,7 +193,7 @@ const UserProfile = ({
                         <Link
                             href="/joined-events"
                             onClick={onClose}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-base-content/80 transition hover:bg-base-300 hover:text-base-content"
                         >
                             <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 text-xs">
                                 ✓
@@ -203,7 +203,7 @@ const UserProfile = ({
                     </div>
 
                     {/* Logout */}
-                    <div className="mt-2 border-t border-slate-100 pt-2">
+                    <div className="mt-2 border-t border-base-300 pt-2">
                         <button
                             type="button"
                             onClick={onSignOut}

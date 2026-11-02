@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -113,7 +114,7 @@ export default function EditEventPage() {
     if (loading) {
         return (
             <main className="min-h-screen px-4 py-16">
-                <p className="text-center text-gray-500">Loading event...</p>
+                <p className="text-center text-base-content/60">Loading event...</p>
             </main>
         );
     }
@@ -121,7 +122,7 @@ export default function EditEventPage() {
     if (!event) {
         return (
             <main className="min-h-screen px-4 py-16">
-                <p className="text-center text-gray-500">Event not found.</p>
+                <p className="text-center text-base-content/60">Event not found.</p>
             </main>
         );
     }
@@ -134,52 +135,52 @@ export default function EditEventPage() {
                         Make an Impact
                     </span>
 
-                    <h1 className="mb-3 text-3xl font-bold text-[#172B24] md:text-4xl">
+                    <h1 className="mb-3 text-3xl font-bold text-base-content md:text-4xl">
                         Update Community Event
                     </h1>
 
-                    <p className="mx-auto max-w-xl text-gray-500">
+                    <p className="mx-auto max-w-xl text-base-content/60">
                         Update your event information and keep your community informed.
                     </p>
                 </div>
 
-                <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-10">
+                <div className="rounded-2xl border border-base-300 bg-base-200 p-6 shadow-sm md:p-10">
                     <form onSubmit={handleUpdateEvent} className="space-y-6">
                         <div>
-                            <label className="mb-2 block font-medium text-[#172B24]">
+                            <label className="mb-2 block font-medium text-base-content">
                                 Event Title
                             </label>
                             <input
                                 type="text"
                                 name="title"
                                 defaultValue={event.title}
-                                className="input w-full border-gray-300"
+                                className="input w-full border-base-300"
                                 required
                             />
                         </div>
 
                         <div>
-                            <label className="mb-2 block font-medium text-[#172B24]">
+                            <label className="mb-2 block font-medium text-base-content">
                                 Event Description
                             </label>
                             <textarea
                                 name="description"
                                 defaultValue={event.description}
                                 rows={5}
-                                className="textarea w-full border-gray-300"
+                                className="textarea w-full border-base-300"
                                 required
                             />
                         </div>
 
                         <div className="grid gap-6 md:grid-cols-2">
                             <div>
-                                <label className="mb-2 block font-medium text-[#172B24]">
+                                <label className="mb-2 block font-medium text-base-content">
                                     Event Category
                                 </label>
                                 <select
                                     name="category"
                                     defaultValue={event.category}
-                                    className="select w-full border-gray-300"
+                                    className="select w-full border-base-300"
                                     required
                                 >
                                     <option value="Cleanup">Cleanup</option>
@@ -190,7 +191,7 @@ export default function EditEventPage() {
                             </div>
 
                             <div>
-                                <label className="mb-2 block font-medium text-[#172B24]">
+                                <label className="mb-2 block font-medium text-base-content">
                                     Event Date
                                 </label>
                                 <input
@@ -205,39 +206,39 @@ export default function EditEventPage() {
                                     )
                                         .toISOString()
                                         .split("T")[0]}
-                                    className="input w-full border-gray-300"
+                                    className="input w-full border-base-300"
                                     required
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label className="mb-2 block font-medium text-[#172B24]">
+                            <label className="mb-2 block font-medium text-base-content">
                                 Event Location
                             </label>
                             <input
                                 type="text"
                                 name="location"
                                 defaultValue={event.location}
-                                className="input w-full border-gray-300"
+                                className="input w-full border-base-300"
                                 required
                             />
                         </div>
 
                         <div>
-                            <label className="mb-2 block font-medium text-[#172B24]">
+                            <label className="mb-2 block font-medium text-base-content">
                                 Event Image URL
                             </label>
                             <input
                                 type="url"
                                 name="image"
                                 defaultValue={event.image}
-                                className="input w-full border-gray-300"
+                                className="input w-full border-base-300"
                                 required
                             />
                         </div>
 
-                        <div className="flex flex-col gap-3 border-t border-gray-100 pt-6 sm:flex-row">
+                        <div className="flex flex-col gap-3 border-t border-base-300 pt-6 sm:flex-row">
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
@@ -248,7 +249,7 @@ export default function EditEventPage() {
 
                             <Link
                                 href="/manage-events"
-                                className="btn btn-outline border-gray-300 text-gray-600 hover:bg-gray-100"
+                                className="btn btn-outline border-base-300 text-base-content/70 hover:bg-base-300"
                             >
                                 Cancel
                             </Link>

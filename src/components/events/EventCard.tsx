@@ -1,4 +1,6 @@
+
 import { CalendarDays } from "lucide-react";
+
 import Link from "next/link";
 
 type EventCardProps = {
@@ -19,7 +21,7 @@ const EventCard = ({
     image,
 }: EventCardProps) => {
     return (
-        <div className="group overflow-hidden rounded-2xl border border-green-100 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+        <div className="group overflow-hidden rounded-2xl border border-green-100 bg-base-200 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl">
 
             {/* Event Image */}
             <div className="relative h-52 overflow-hidden">
@@ -45,18 +47,18 @@ const EventCard = ({
             <div className="p-6">
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-[#172B24] transition group-hover:text-green-700">
+                <h3 className="text-xl font-bold text-base-content transition group-hover:text-green-700">
                     {title}
                 </h3>
 
                 {/* Location */}
-                <div className="mt-3 flex items-center gap-2 text-sm text-gray-500">
+                <div className="mt-3 flex items-center gap-2 text-sm text-base-content/70">
                     <span>📍</span>
                     <span>{location}</span>
                 </div>
 
                 {/* Button Section */}
-                <div className="mt-6 border-t border-gray-100 pt-4">
+                <div className="mt-6 border-t border-base-300 pt-4">
                     <Link
                         href={`/events/${id}`}
                         className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-700 py-3 text-white font-semibold transition hover:bg-green-800"

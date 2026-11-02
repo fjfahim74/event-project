@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -75,44 +76,44 @@ export default function CreateEventPage() {
                         Make an Impact
                     </span>
 
-                    <h1 className="mb-3 text-3xl font-bold text-[#172B24] md:text-4xl">
+                    <h1 className="mb-3 text-3xl font-bold text-base-content md:text-4xl">
                         Create a Community Event
                     </h1>
 
-                    <p className="mx-auto max-w-xl text-gray-500">
+                    <p className="mx-auto max-w-xl text-base-content/60">
                         Bring people together for a meaningful cause. Create
                         an event and inspire your community to make a difference.
                     </p>
                 </div>
 
                 {/* Form */}
-                <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-10">
+                <div className="rounded-2xl border border-base-300 bg-base-200 p-6 shadow-sm md:p-10">
                     <form onSubmit={handleCreateEvent} className="space-y-6">
 
                         {/* Event Title */}
                         <div>
-                            <label className="mb-2 block font-medium text-[#172B24]">
+                            <label className="mb-2 block font-medium text-base-content">
                                 Event Title
                             </label>
                             <input
                                 type="text"
                                 name="title"
                                 placeholder="e.g. Community Tree Plantation"
-                                className="input w-full border-gray-300"
+                                className="input w-full border-base-300"
                                 required
                             />
                         </div>
 
                         {/* Description */}
                         <div>
-                            <label className="mb-2 block font-medium text-[#172B24]">
+                            <label className="mb-2 block font-medium text-base-content">
                                 Event Description
                             </label>
                             <textarea
                                 name="description"
                                 placeholder="Describe your event and its purpose..."
                                 rows={5}
-                                className="textarea w-full border-gray-300"
+                                className="textarea w-full border-base-300"
                                 required
                             />
                         </div>
@@ -120,13 +121,13 @@ export default function CreateEventPage() {
                         {/* Category and Date */}
                         <div className="grid gap-6 md:grid-cols-2">
                             <div>
-                                <label className="mb-2 block font-medium text-[#172B24]">
+                                <label className="mb-2 block font-medium text-base-content">
                                     Event Category
                                 </label>
                                 <select
                                     name="category"
                                     defaultValue=""
-                                    className="select w-full border-gray-300"
+                                    className="select w-full border-base-300"
                                     required
                                 >
                                     <option value="" disabled>
@@ -140,7 +141,7 @@ export default function CreateEventPage() {
                             </div>
 
                             <div>
-                                <label className="mb-2 block font-medium text-[#172B24]">
+                                <label className="mb-2 block font-medium text-base-content">
                                     Event Date
                                 </label>
                                 <input
@@ -152,7 +153,7 @@ export default function CreateEventPage() {
                                     )
                                         .toISOString()
                                         .split("T")[0]}
-                                    className="input w-full border-gray-300"
+                                    className="input w-full border-base-300"
                                     required
                                 />
                             </div>
@@ -160,34 +161,34 @@ export default function CreateEventPage() {
 
                         {/* Location */}
                         <div>
-                            <label className="mb-2 block font-medium text-[#172B24]">
+                            <label className="mb-2 block font-medium text-base-content">
                                 Event Location
                             </label>
                             <input
                                 type="text"
                                 name="location"
                                 placeholder="e.g. Comilla, Bangladesh"
-                                className="input w-full border-gray-300"
+                                className="input w-full border-base-300"
                                 required
                             />
                         </div>
 
                         {/* Image URL */}
                         <div>
-                            <label className="mb-2 block font-medium text-[#172B24]">
+                            <label className="mb-2 block font-medium text-base-content">
                                 Event Image URL
                             </label>
                             <input
                                 type="url"
                                 name="image"
                                 placeholder="https://example.com/event-image.jpg"
-                                className="input w-full border-gray-300"
+                                className="input w-full border-base-300"
                                 required
                             />
                         </div>
 
                         {/* Buttons */}
-                        <div className="flex flex-col gap-3 border-t border-gray-100 pt-6 sm:flex-row">
+                        <div className="flex flex-col gap-3 border-t border-base-300 pt-6 sm:flex-row">
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
@@ -198,7 +199,7 @@ export default function CreateEventPage() {
 
                             <Link
                                 href="/upcoming-events"
-                                className="btn btn-outline border-gray-300 text-gray-600 hover:bg-gray-100"
+                                className="btn btn-outline border-base-300 text-base-content/70 hover:bg-base-300"
                             >
                                 Cancel
                             </Link>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -35,7 +36,7 @@ export default function EventGrid({
     return (
         <div>
             <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-                <p className="text-gray-600">
+                <p className="text-base-content/70">
                     Showing{" "}
                     <span className="font-semibold">
                         {filteredEvents.length}
@@ -46,7 +47,7 @@ export default function EventGrid({
                 <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none focus:border-emerald-600"
+                    className="rounded-xl border border-base-300 bg-base-200 px-4 py-3 text-sm outline-none focus:border-emerald-600"
                 >
                     {categories.map((category) => (
                         <option key={category} value={category}>
@@ -63,12 +64,12 @@ export default function EventGrid({
                     ))}
                 </div>
             ) : (
-                <div className="rounded-2xl border border-dashed border-gray-300 py-16 text-center">
-                    <h3 className="text-xl font-semibold text-[#172B24]">
+                <div className="rounded-2xl border border-dashed border-base-300 py-16 text-center">
+                    <h3 className="text-xl font-semibold text-base-content">
                         No events found
                     </h3>
 
-                    <p className="mt-2 text-gray-500">
+                    <p className="mt-2 text-base-content/60">
                         Try selecting a different category.
                     </p>
                 </div>
