@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
-import Image from "next/image";
+import { HandCoins } from "lucide-react";
 
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
@@ -53,17 +53,15 @@ const Navbar = () => {
 
     return (
         <nav className="sticky top-0 z-50 border-b border-base-300 bg-base-100">
-
             <div className="navbar mx-auto max-w-7xl px-4">
-
                 {/* Logo */}
                 <div className="navbar-start">
-                    <Link href="/" className="flex items-center gap-2">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-700 text-xl font-bold text-white">
-                            E
+                    <Link href="/" className="flex items-center gap-2.5 group">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-700 text-white shadow-md transition-transform group-hover:scale-105">
+                            <HandCoins className="h-6 w-6" />
                         </div>
 
-                        <span className="text-xl font-bold text-green-800">
+                        <span className="text-xl font-bold tracking-tight text-green-800">
                             Eventify
                         </span>
                     </Link>
@@ -90,7 +88,6 @@ const Navbar = () => {
                     setIsMenuOpen={setIsMenuOpen}
                     handleSignOut={handleSignOut}
                 />
-
             </div>
         </nav>
     );

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import ManageEventCard from "@/components/events/ManageEventCard";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 type Event = {
     _id: string;
@@ -29,8 +30,15 @@ export default function ManageEventsPage() {
             }
 
             try {
+
+                const token = await getTokenFromClient();
                 const res = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL}/api/my-events/${session.user.email}`
+                    `${process.env.NEXT_PUBLIC_API_URL}/api/my-events/${session.user.email}`,
+                    {
+                        headers: {
+                            authorization: `Bearer ${token}`,
+                        },
+                    }
                 );
 
                 if (!res.ok) {
@@ -57,10 +65,15 @@ export default function ManageEventsPage() {
         if (!selectedEventId) return;
 
         try {
+
+            const token = await getTokenFromClient();
             const res = await fetch(
                 `${process.env.NEXT_PUBLIC_API_URL}/api/events/${selectedEventId}`,
                 {
                     method: "DELETE",
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
                 }
             );
 

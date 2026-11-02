@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import EventCard from "@/components/events/EventCard";
 import { authClient } from "@/lib/auth-client";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 type JoinedEvent = {
     _id: string;
@@ -27,16 +28,13 @@ export default function JoinedEventsPage() {
             }
 
             try {
-                const { data: tokenData } = await authClient.token();
-                const jwtToken = tokenData?.token;
-
-                console.log("JWT Token from client:", jwtToken);
+                const token = await getTokenFromClient();
 
                 const res = await fetch(
                     `${process.env.NEXT_PUBLIC_API_URL}/api/event-joins/${session.user.email}`,
                     {
                         headers: {
-                            authorization: `Bearer ${jwtToken}`
+                            authorization: `Bearer ${token}`
                         }
                     }
                 );

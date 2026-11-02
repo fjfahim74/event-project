@@ -1,3 +1,4 @@
+import { CalendarDays } from "lucide-react";
 import Link from "next/link";
 
 type EventCardProps = {
@@ -35,7 +36,7 @@ const EventCard = ({
 
                 {/* Date Badge (Bottom Left over Image) */}
                 <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-lg bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow backdrop-blur-sm">
-                    <span>📅</span>
+                    <CalendarDays className="h-4 w-4" />
                     <span>{date}</span>
                 </div>
             </div>
