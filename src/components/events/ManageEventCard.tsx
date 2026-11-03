@@ -40,7 +40,11 @@ export default function ManageEventCard({
                 </h3>
 
                 <p className="mt-2 text-sm text-base-content/60">
-                    📅 {date}
+                    📅 {new Date(date).toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                    })}
                 </p>
 
                 <p className="mt-2 text-sm text-base-content/60">

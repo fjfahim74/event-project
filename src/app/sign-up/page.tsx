@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 export default function SignUpPage() {
     const router = useRouter();
@@ -71,6 +72,13 @@ export default function SignUpPage() {
             return;
         }
 
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            toast.error("Please enter a valid email address.");
+            return;
+        }
+
         if (password !== confirmPassword) {
             toast.error("Passwords do not match.");
             return;
@@ -89,25 +97,30 @@ export default function SignUpPage() {
         try {
             setIsLoading(true);
 
-            const { error } = await authClient.signUp.email({
+            const result = await authClient.signUp.email({
                 name,
                 email,
                 password,
                 image,
             });
 
+            console.log("SIGNUP RESULT:", result);
+
+            const { error } = result;
+
             if (error) {
                 if (error.code === "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL") {
                     toast.error("An account with this email already exists!");
                 } else {
-                    toast.error(error.message || "Unable to create your account.");
+                    toast.error("Unable to create your account. Please try again.");
                 }
 
                 return;
             }
 
-            toast.success("Account created successfully!");
+            await authClient.signOut();
 
+            toast.success("Account created successfully!");
             router.push("/sign-in");
         } catch {
             toast.error("Something went wrong. Please try again.");
@@ -260,7 +273,14 @@ export default function SignUpPage() {
                         disabled={isGoogleLoading || isGithubLoading}
                         className="w-full rounded-lg border border-base-300 py-3 font-medium text-base-content/80 transition hover:bg-base-300 disabled:opacity-60"
                     >
-                        {isGoogleLoading ? "Connecting..." : "Continue with Google"}
+                        {isGoogleLoading ? (
+                            "Connecting..."
+                        ) : (
+                            <span className="flex items-center justify-center gap-2">
+                                <FaGoogle />
+                                Continue with Google
+                            </span>
+                        )}
                     </button>
 
                     <button
@@ -269,7 +289,13 @@ export default function SignUpPage() {
                         disabled={isGithubLoading || isGoogleLoading}
                         className="w-full rounded-lg border border-base-300 py-3 font-medium text-base-content/80 transition hover:bg-base-300 disabled:opacity-60"
                     >
-                        {isGithubLoading ? "Connecting..." : "Continue with GitHub"}
+                        {isGithubLoading ? "Connecting..." :
+                            (
+                                <span className="flex items-center justify-center gap-2">
+                                    <FaGithub />
+                                    Continue with GitHub
+                                </span>
+                            )}
                     </button>
                 </div>
 

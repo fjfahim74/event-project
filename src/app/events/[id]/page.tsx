@@ -6,6 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import JoinEventButton from "@/components/events/JoinEventButton";
+import { ArrowLeft } from "lucide-react";
 
 type Event = {
     _id: string;
@@ -44,7 +45,8 @@ export default async function EventDetailsPage({
                     href="/upcoming-events"
                     className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-[#176B4D] hover:text-emerald-800"
                 >
-                    ← Back to Upcoming Events
+                    <ArrowLeft className=" w-4" />
+                    Back to Upcoming Events
                 </Link>
 
                 <div className="overflow-hidden rounded-3xl border border-base-300 bg-base-200 shadow-sm">
@@ -65,9 +67,6 @@ export default async function EventDetailsPage({
                                 {event.category}
                             </span>
 
-                            <span className="text-sm text-base-content/60">
-                                Event ID: {event._id}
-                            </span>
                         </div>
 
                         <h1 className="text-3xl font-bold text-base-content sm:text-4xl">

@@ -16,10 +16,10 @@ const DesktopNav = ({
             <div className="navbar-center hidden md:flex">
                 <Link
                     href="/upcoming-events"
-                    className="group flex items-center gap-2 text-sm font-semibold text-emerald-500 transition hover:text-emerald-600"
+                    className="group flex items-center gap-2 text-sm font-semibold text-green-600 transition hover:text-emerald-600"
                 >
                     <svg
-                        className="h-4 w-4 text-emerald-400 transition group-hover:scale-110"
+                        className="h-4 w-4 text-green-600 transition group-hover:scale-110"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"

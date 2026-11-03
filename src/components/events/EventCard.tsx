@@ -1,5 +1,5 @@
 
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, ArrowRight } from "lucide-react";
 
 import Link from "next/link";
 
@@ -64,7 +64,7 @@ const EventCard = ({
                         className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-700 py-3 text-white font-semibold transition hover:bg-green-800"
                     >
                         <span>View Event</span>
-                        <span className="text-xl">→</span>
+                        <ArrowRight className="h-4 w-4" />
                     </Link>
                 </div>
 

@@ -67,15 +67,19 @@ const Hero = () => {
 
                         <div className="mt-10 grid grid-cols-2 gap-4">
 
-                            <div className="rounded-2xl bg-white/10 p-5">
-                                <h3 className="text-2xl font-bold">Together</h3>
+                            <div className="flex flex-col items-center justify-center rounded-2xl bg-white/10 p-5 text-center">
+                                <h3 className="text-xl font-bold sm:text-2xl">
+                                    Together
+                                </h3>
                                 <p className="mt-1 text-sm text-green-100">
                                     We make impact
                                 </p>
                             </div>
 
-                            <div className="rounded-2xl bg-white/10 p-5">
-                                <h3 className="text-2xl font-bold">Every Day</h3>
+                            <div className="flex flex-col items-center justify-center rounded-2xl bg-white/10 p-5 text-center">
+                                <h3 className="text-xl font-bold sm:text-2xl">
+                                    Every Day
+                                </h3>
                                 <p className="mt-1 text-sm text-green-100">
                                     We help others
                                 </p>

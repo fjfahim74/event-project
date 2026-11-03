@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { useEffect, useRef } from "react";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 export default function SignInPage() {
     const router = useRouter();
@@ -117,7 +118,7 @@ export default function SignInPage() {
                     </p>
                 </div>
 
-                <form onSubmit={onSubmit} noValidate className="space-y-5">
+                <form onSubmit={onSubmit} noValidate autoComplete="off" className="space-y-5">
 
                     <div>
                         <label
@@ -132,7 +133,7 @@ export default function SignInPage() {
                             name="email"
                             type="email"
                             placeholder="Enter your email"
-                            autoComplete="email"
+                            autoComplete="off"
                             required
                             disabled={isLoading}
                             className="w-full rounded-lg border-2 border-base-content/20 bg-base-100 px-4 py-3 text-base-content placeholder:text-base-content/40 outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
@@ -188,24 +189,34 @@ export default function SignInPage() {
                     <div className="h-px flex-1 bg-base-300" />
                 </div>
 
-                <div className="flex flex-col gap-3 sm:flex-row">
+                <div className="space-y-3">
 
                     <button
                         type="button"
                         onClick={handleGoogleSignIn}
                         disabled={isGoogleLoading || isGithubLoading || isLoading}
-                        className="flex-1 rounded-lg border border-base-300 px-4 py-3 text-sm font-medium text-base-content/80 transition hover:bg-base-300 disabled:opacity-60"
+                        className="w-full rounded-lg border border-base-300 py-3 font-medium text-base-content/80 transition hover:bg-base-300 disabled:opacity-60"
                     >
-                        {isGoogleLoading ? "Connecting..." : "Continue with Google"}
+                        {isGoogleLoading ? "Connecting..." : (
+                            <span className="flex items-center justify-center gap-2">
+                                <FaGoogle />
+                                Continue with Google
+                            </span>
+                        )}
                     </button>
 
                     <button
                         type="button"
                         onClick={handleGithubSignIn}
                         disabled={isGithubLoading || isGoogleLoading || isLoading}
-                        className="flex-1 rounded-lg border border-base-300 px-4 py-3 text-sm font-medium text-base-content/80 transition hover:bg-base-300 disabled:opacity-60"
+                        className="w-full rounded-lg border border-base-300 py-3 font-medium text-base-content/80 transition hover:bg-base-300 disabled:opacity-60"
                     >
-                        {isGithubLoading ? "Connecting..." : "Continue with GitHub"}
+                        {isGithubLoading ? "Connecting..." : (
+                            <span className="flex items-center justify-center gap-2">
+                                <FaGithub />
+                                Continue with GitHub
+                            </span>
+                        )}
                     </button>
 
                 </div>

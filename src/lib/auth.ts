@@ -9,7 +9,6 @@ const db = client.db("project");
 export const auth = betterAuth({
     emailAndPassword: {
         enabled: true,
-        autoSignIn: false,
     },
 
     plugins: [

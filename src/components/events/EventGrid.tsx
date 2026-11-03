@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import EventCard from "./EventCard";
+import { ChevronDown } from "lucide-react";
 
 export type EventCardData = {
     id: string;
@@ -44,17 +45,24 @@ export default function EventGrid({
                     events
                 </p>
 
-                <select
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="rounded-xl border border-base-300 bg-base-200 px-4 py-3 text-sm outline-none focus:border-emerald-600"
-                >
-                    {categories.map((category) => (
-                        <option key={category} value={category}>
-                            {category === "All" ? "All Categories" : category}
-                        </option>
-                    ))}
-                </select>
+                <div className="relative">
+                    <select
+                        value={selectedCategory}
+                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        className="w-full appearance-none rounded-xl border border-base-300 bg-base-200 py-3 pl-4 pr-8 text-sm outline-none focus:border-emerald-600"
+                    >
+                        {categories.map((category) => (
+                            <option key={category} value={category}>
+                                {category === "All" ? "All Categories" : category}
+                            </option>
+                        ))}
+                    </select>
+
+                    <ChevronDown
+                        size={16}
+                        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2"
+                    />
+                </div>
             </div>
 
             {filteredEvents.length > 0 ? (

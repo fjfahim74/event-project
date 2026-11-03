@@ -81,7 +81,11 @@ export default function JoinedEventsPage() {
                                 id={event.eventId}
                                 title={event.eventTitle}
                                 category={event.eventCategory}
-                                date={new Date(event.eventDate).toLocaleDateString()}
+                                date={new Date(event.eventDate).toLocaleDateString("en-US", {
+                                    month: "long",
+                                    day: "numeric",
+                                    year: "numeric",
+                                })}
                                 location={event.eventLocation}
                                 image={event.eventImage}
                             />

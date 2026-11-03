@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type UserProfileProps = {
     user: {
@@ -28,6 +28,8 @@ const UserProfile = ({
 }: UserProfileProps) => {
 
     const profileRef = useRef<HTMLDivElement>(null);
+    const [mobileImageError, setMobileImageError] = useState(false);
+    const [desktopImageError, setDesktopImageError] = useState(false);
 
     // Close dropdown when clicking outside
     useEffect(() => {
@@ -52,13 +54,14 @@ const UserProfile = ({
         return (
             <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-3 border-b border-base-300 pb-4 mb-2">
-                    {user.image ? (
+                    {user.image && !mobileImageError ? (
                         <Image
                             src={user.image}
                             alt="Profile"
                             width={42}
                             height={42}
                             unoptimized
+                            onError={() => setMobileImageError(true)}
                             className="h-11 w-11 rounded-full object-cover ring-2 ring-emerald-500/20"
                         />
                     ) : (
@@ -134,13 +137,14 @@ const UserProfile = ({
                 className="group flex cursor-pointer items-center rounded-full p-0.5 transition focus:outline-none"
                 title={user.name}
             >
-                {user.image ? (
+                {user.image && !desktopImageError ? (
                     <Image
                         src={user.image}
                         alt="Profile"
                         width={38}
                         height={38}
                         unoptimized
+                        onError={() => setDesktopImageError(true)}
                         className="h-9 w-9 rounded-full object-cover ring-2 ring-transparent transition group-hover:ring-emerald-600/30"
                     />
                 ) : (

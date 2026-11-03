@@ -242,14 +242,14 @@ export default function EditEventPage() {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="btn flex-1 border-none bg-[#176B4D] text-white hover:bg-[#12563D]"
+                                className="btn flex-1 border-none bg-[#176B4D] py-2 text-white hover:bg-[#12563D]"
                             >
                                 {isSubmitting ? "Updating..." : "Update Event"}
                             </button>
 
                             <Link
                                 href="/manage-events"
-                                className="btn btn-outline border-base-300 text-base-content/70 hover:bg-base-300"
+                                className="btn btn-outline border-base-300 py-2 text-base-content/70 hover:bg-base-300"
                             >
                                 Cancel
                             </Link>

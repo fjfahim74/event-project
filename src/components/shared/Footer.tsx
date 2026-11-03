@@ -7,7 +7,7 @@ const Footer = () => {
 
                     {/* Logo and Description */}
                     <div className="text-center md:text-left">
-                        <h2 className="text-xl font-bold text-emerald-500">
+                        <h2 className="text-xl font-bold text-green-700">
                             Eventify
                         </h2>
 
