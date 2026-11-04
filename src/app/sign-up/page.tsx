@@ -118,8 +118,6 @@ export default function SignUpPage() {
                 return;
             }
 
-            await authClient.signOut();
-
             toast.success("Account created successfully!");
             router.push("/sign-in");
         } catch {
