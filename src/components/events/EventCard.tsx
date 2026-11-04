@@ -1,5 +1,5 @@
 
-import { CalendarDays, ArrowRight } from "lucide-react";
+import { CalendarDays, ArrowRight, MapPin } from "lucide-react";
 
 import Link from "next/link";
 
@@ -53,7 +53,7 @@ const EventCard = ({
 
                 {/* Location */}
                 <div className="mt-3 flex items-center gap-2 text-sm text-base-content/70">
-                    <span>📍</span>
+                    <MapPin className="h-4 w-4 text-red-500" />
                     <span>{location}</span>
                 </div>
 
