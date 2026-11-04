@@ -2,15 +2,7 @@
 import { CalendarDays, ArrowRight, MapPin } from "lucide-react";
 
 import Link from "next/link";
-
-type EventCardProps = {
-    id: string;
-    title: string;
-    category: string;
-    date: string;
-    location: string;
-    image: string;
-};
+import type { EventCardProps } from "@/types/type";
 
 const EventCard = ({
     id,

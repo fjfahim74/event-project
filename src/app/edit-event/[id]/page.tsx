@@ -7,17 +7,8 @@ import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { getTokenFromClient } from "@/lib/getTokenFromClient";
+import type { EditEvent } from "@/types/type";
 
-type Event = {
-    _id: string;
-    title: string;
-    description: string;
-    category: string;
-    date: string;
-    location: string;
-    image: string;
-    creatorEmail: string;
-};
 
 export default function EditEventPage() {
     const router = useRouter();
@@ -26,7 +17,7 @@ export default function EditEventPage() {
 
     const { data: session } = authClient.useSession();
 
-    const [event, setEvent] = useState<Event | null>(null);
+    const [event, setEvent] = useState<EditEvent | null>(null);
     const [loading, setLoading] = useState(true);
     const [isSubmitting, setIsSubmitting] = useState(false);
 

@@ -1,15 +1,6 @@
 
 import Link from "next/link";
-
-type ManageEventCardProps = {
-    id: string;
-    title: string;
-    category: string;
-    date: string;
-    location: string;
-    image: string;
-    onDelete: (id: string) => void;
-};
+import type { ManageEventCardProps } from "@/types/type";
 
 export default function ManageEventCard({
     id,

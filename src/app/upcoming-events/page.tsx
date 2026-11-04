@@ -4,15 +4,7 @@ import { Suspense } from "react";
 import EventGrid, {
     type EventCardData,
 } from "@/components/events/EventGrid";
-
-type ApiEvent = {
-    _id: string;
-    title: string;
-    category: string;
-    date: string;
-    location: string;
-    image: string;
-};
+import type { ApiEvent } from "@/types/type";
 
 async function UpcomingEvents() {
     const res = await fetch(

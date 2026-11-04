@@ -6,19 +6,11 @@ import ManageEventCard from "@/components/events/ManageEventCard";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { getTokenFromClient } from "@/lib/getTokenFromClient";
-
-type Event = {
-    _id: string;
-    title: string;
-    category: string;
-    date: string;
-    location: string;
-    image: string;
-};
+import type { ApiEvent } from "@/types/type";
 
 export default function ManageEventsPage() {
     const { data: session } = authClient.useSession();
-    const [events, setEvents] = useState<Event[]>([]);
+    const [events, setEvents] = useState<ApiEvent[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
 

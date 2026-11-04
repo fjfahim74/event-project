@@ -7,16 +7,7 @@ import { notFound } from "next/navigation";
 
 import JoinEventButton from "@/components/events/JoinEventButton";
 import { ArrowLeft } from "lucide-react";
-
-type Event = {
-    _id: string;
-    title: string;
-    category: string;
-    date: string;
-    location: string;
-    image: string;
-    description: string;
-};
+import type { EventDetails } from "@/types/type";
 
 export default async function EventDetailsPage({
     params,
@@ -36,7 +27,7 @@ export default async function EventDetailsPage({
         notFound();
     }
 
-    const event: Event = await res.json();
+    const event: EventDetails = await res.json();
 
     return (
         <main className="min-h-screen bg-base-100">

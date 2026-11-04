@@ -5,14 +5,10 @@ import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { getTokenFromClient } from "@/lib/getTokenFromClient";
+import type { JoinEvent } from "@/types/type";
 
-type Event = {
-    _id: string;
-    title: string;
-    image: string;
-};
 
-export default function JoinEventButton({ event }: { event: Event }) {
+export default function JoinEventButton({ event }: { event: JoinEvent }) {
     const { data: session } = authClient.useSession();
     const [isJoining, setIsJoining] = useState(false);
     const router = useRouter();
@@ -73,7 +69,7 @@ export default function JoinEventButton({ event }: { event: Event }) {
         <button
             onClick={handleJoinEvent}
             disabled={isJoining}
-            className="mt-6 rounded-xl bg-[#176B4D] px-8 py-3 font-semibold text-white transition hover:bg-[#12563D] disabled:cursor-not-allowed disabled:opacity-60"
+            className="mt-6 rounded-xl bg-[#176B4D] px-8 py-3 font-semibold text-white transition hover:bg-[#12563D] disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer"
         >
             {isJoining ? "Joining..." : "Join Event"}
         </button>

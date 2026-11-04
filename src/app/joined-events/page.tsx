@@ -5,16 +5,7 @@ import { useEffect, useState } from "react";
 import EventCard from "@/components/events/EventCard";
 import { authClient } from "@/lib/auth-client";
 import { getTokenFromClient } from "@/lib/getTokenFromClient";
-
-type JoinedEvent = {
-    _id: string;
-    eventId: string;
-    eventTitle: string;
-    eventImage: string;
-    eventCategory: string;
-    eventLocation: string;
-    eventDate: string;
-};
+import type { JoinedEvent } from "@/types/type";
 
 export default function JoinedEventsPage() {
     const { data: session } = authClient.useSession();

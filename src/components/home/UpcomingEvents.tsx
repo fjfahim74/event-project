@@ -2,15 +2,7 @@
 import Link from "next/link";
 
 import EventCard from "@/components/events/EventCard";
-
-type ApiEvent = {
-    _id: string;
-    title: string;
-    category: string;
-    date: string;
-    location: string;
-    image: string;
-};
+import type { ApiEvent } from "@/types/type";
 
 async function UpcomingEvents() {
     const res = await fetch(

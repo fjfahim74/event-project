@@ -4,16 +4,9 @@
 import { useState } from "react";
 import EventCard from "./EventCard";
 import { ChevronDown } from "lucide-react";
+import type { EventCardProps } from "@/types/type";
 
-export type EventCardData = {
-    id: string;
-    title: string;
-    category: string;
-    date: string;
-    location: string;
-    image: string;
-};
-
+export interface EventCardData extends EventCardProps { }
 export default function EventGrid({
     events,
 }: {
